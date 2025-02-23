@@ -9,14 +9,16 @@
 						<span class="icon-bar"></span>
 					</button>
 					<div class="navbar-brand">
-						<a href="index.html"><h1>K&R Acrílicos</h1></a>
+						<a href="index.php">
+							<img src="img/logoNav.png" alt="K&R Acrílicos" class="logo">
+						</a>
 					</div>
 				</div>		
 				<div class="navbar-collapse collapse">							
 					<div class="menu">
 						<ul class="nav nav-tabs" role="tablist">
-							<li role="presentation"><a href="index.php" class="active">Inicio</a></li>
-							<li role="presentation"><a href="gallery.php">Catálogo</a></li>							
+							<li role="presentation"><a href="index.php">Inicio</a></li>
+							<li role="presentation"><a href="catalogo.php" class="active">Catálogo</a></li>							
 							<li role="presentation"><a href="services.php">Servicios</a></li>
 							<li role="presentation"><a href="about.php">Nosotros</a></li>
 							<li role="presentation"><a href="contact.php">Contacto</a></li>						

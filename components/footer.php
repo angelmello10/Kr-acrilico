@@ -35,9 +35,21 @@
 					</div>
 					<div class="btn-gamp">
 						<a type="submit" class="btn btn-default">Subscribe</a>
-					</div>
-				
-			</div>
-			
+					</div>				
+			</div>			
 		</div>	
 	</footer>
+	<div class="sub-footer">
+		<div class="container">
+			<div class="social-icon">
+				<div class="col-md-4">
+					<ul class="social-network">
+						<li><a href="#" class="fb tool-tip" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+						
+					</ul>	
+				</div>				
+			</div>
+			
+		</div>			
+			
+	</div>
