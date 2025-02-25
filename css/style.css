@@ -60,20 +60,42 @@ a:hover {
 
 /* Estilos para el logo */
 .navbar-brand {
-  display: flex; /* Asegura que los elementos internos se alineen correctamente */
-  align-items: center; /* Centra el logo verticalmente */
+  position: relative; /* Fija el contenedor en la pantalla */
+  top: 0; /* Lo coloca en la parte superior */
+  left: 10px; /* Ajusta la posición horizontal */
+  padding: 6px; /* Espacio alrededor del logo */
+  display: flex; /* Habilita flexbox para centrar el logo */
   justify-content: center; /* Centra el logo horizontalmente */
-  padding: 10px 20px; /* Ajusta el espacio interno */
-  background: #65AAF0; /* Color de fondo */
-  height: 100%; /* Asegura que ocupe toda la altura del nav */
+  align-items: center; /* Centra el logo verticalmente */
+  background: #65AAF0; /* Fondo azul para el contenedor (opcional) */
 }
 
 .navbar-brand .logo {
-  max-width: 100px; /* Ajusta el tamaño del logo */
-  height: auto; /* Mantiene la proporción */
+  width: 100px; /* Tamaño base del logo */
+  height: auto; /* Mantiene la proporción del logo */
+  max-width: 100%; /* Asegura que el logo no se desborde en pantallas pequeñas */
 }
 
+/* Estilos responsivos para el logo */
+@media screen and (max-width: 768px) {
+  .navbar-brand .logo {
+    width: 80px; /* Tamaño más pequeño para tablets */
+  }
+}
 
+@media screen and (max-width: 460px) {
+  .navbar-brand .logo {
+    width: 60px; /* Tamaño más pequeño para móviles */
+  }
+}
+
+/* Ajustes para escritorio */
+@media screen and (min-width: 1024px) {
+  .navbar-brand {
+    padding: 20px; /* Más espacio alrededor del logo en escritorio */
+    top: 15px; /* Ajusta la posición vertical si es necesario */
+  }
+}
 .navbar-brand h1 {
 	margin-top:9px;
 	padding-top:5px;
@@ -300,6 +322,7 @@ Media Queries para Responsividad */
 	color:#696767;
   font-size: 18px;
   line-height: 1.5;
+  text-align: center;
 } 
 
 .btn-gamp a {
@@ -322,7 +345,6 @@ Media Queries para Responsividad */
 }
 
 .gamp-btn a {
-  float: left;
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 3px;
@@ -331,8 +353,9 @@ Media Queries para Responsividad */
   width: 180px;
   height: 60px;
   text-align: center;
-  display: inline-block;
+  display: block; /* Cambia a bloque */
   line-height: 60px;
+  margin: 0 auto; /* Centra horizontalmente */
 }
 .gamp-btn a:hover {
   color: #ffffff;
@@ -758,19 +781,20 @@ ul.social_icons li  a i{
 	position: relative;	
 	margin-top:30px;
 	margin-bottom:30px;
-	background: #272727;
+	background: #c6cbd0;
 	text-align: center;
 	cursor: pointer;
 }
 
 .gallery figure img {
-	position: relative;
-	display: block;
-	opacity: 0.8;
+    width: 350px; /* Ajusta el ancho según lo que necesites */
+    height: 300px; /* Ajusta la altura según lo que necesites */
+    object-fit: cover; /* Corta la imagen para llenar el contenedor sin deformarse */
+    opacity: 1;
 }
 
-.gallery figure figcaption {
-	padding: 2em;
+.gallery figure figcaption {/* Esto es la barra debajo de la imagen */
+	padding: 1.2em;
 	color: #fff;
 	text-transform: uppercase;
 	font-size: 1.25em;
@@ -791,30 +815,53 @@ figure.effect-marley figcaption {
 	text-align: right;
 }
 
-figure.effect-marley h4,
+figure.effect-marley h4 {
+  position: absolute;
+  right: 30px;
+  left: 30px;
+  padding: 1px 0;
+  font-size: 15px;
+  font-weight: bold;
+  text-align: left;
+}
+
 figure.effect-marley p {
-	position: absolute;
-	right: 30px;
-	left: 30px;
-	padding: 10px 0;
+  position: absolute;
+  right: 30px;
+  left: 30px;
+  padding: 17px 0;
+  font-size: 15px;
+  text-align: center;
+  font-weight: bold;
 }
 
 
+
 figure.effect-marley p {
-	bottom: 30px;
-	color:#fff;
+	bottom: 25px;
+	color:#ffffff;
 	line-height: 1.5;
 	-webkit-transform: translate3d(0,100%,0);
 	transform: translate3d(0,100%,0);
+  text-shadow: 
+  -1px -1px 0 black,  
+   1px -1px 0 black,  
+  -1px  1px 0 black,  
+   1px  1px 0 black; /* Crea el borde blanco */
 }
 
 figure.effect-marley h4 {
 	top: 30px;
-	color:#fff;
+	color:#000000;
 	-webkit-transition: -webkit-transform 0.35s;
 	transition: transform 0.35s;
 	-webkit-transform: translate3d(0,20px,0);
 	transform: translate3d(0,20px,0);
+  text-shadow: 
+    -1px -1px 0 white,  
+     1px -1px 0 white,  
+    -1px  1px 0 white,  
+     1px  1px 0 white; /* Crea el borde blanco */
 }
 
 figure.effect-marley:hover h4 {
@@ -828,7 +875,7 @@ figure.effect-marley h4::after {
 	left: 0;
 	width: 100%;
 	height: 4px;
-	background: #fff;
+	background: #000000;
 	content: '';
 	-webkit-transform: translate3d(0,40px,0);
 	transform: translate3d(0,40px,0);
@@ -882,10 +929,10 @@ figure.effect-marley:hover p {
   right: 0;
   width: 50%;
   height: 100%;
-  background-size: cover;
-  background-position: 0 0;
+  background-size: contain; /* Se ajusta sin recortar */
+  background-position: center; /* Centra la imagen */
   background-repeat: no-repeat;
-  background-image: url(../img/7.jpg);
+  background-image: url(../img/laser.jpg);
 }
 
 /* --- Map --- */
@@ -953,59 +1000,45 @@ textarea#message{
 /*===========================
   Footer
 ============================ */
-footer {
-	padding:50px;
-	background:#65AAF0;
+/* Estilos generales del footer */
+.footer {
+  background-color: #65AAF0; /* Color de fondo */
+  color: #fff; /* Color del texto */
+  padding: 1 px; /* Espaciado interno */
+  font-family: Arial, sans-serif; /* Fuente */
+  text-align: center; /* Centrar el contenido */
 }
 
-footer p {
-	color:#fff;
+/* Contenedor del contenido del footer */
+.footer-content {
+  max-width: 1200px; /* Ancho máximo del contenido */
+  margin: 0 auto; /* Centrar el contenido */
+  padding: 0 20px; /* Espaciado lateral */
 }
 
-footer h4 {
-	margin-bottom:30px;
-	text-transform:uppercase;
-	text-shadow:none;
-	font-weight:550;
-	color:#272727;
+.footer-section h2 {
+  margin-bottom: 10px; /* Espacio inferior */
+  color: #ffffff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Sombra para mejorar la visibilidad */
 }
 
-footer .btn-gamp a {
-	font-size: 12px;
-	text-transform: uppercase;
-	letter-spacing: 3px;
-	color: #fff;
-	width: 180px;
-	height: 60px;
-	text-align: center;
-	display: inline-block;
-	line-height: 45px;
-	margin-right:170px;
-	margin-top:20px;
-	background:#272727;
-	border: 1px solid #fff;
-	border-radius:0px;
+.footer-section p {
+  font-size: 1em; /* Tamaño del texto */
+  margin: 5px 0; /* Espaciado entre párrafos */
+  color: #ffffff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Sombra para mejorar la visibilidad */
 }
 
-footer .btn-gamp a:hover {
-	background:#fff;
-	color:#272727;
-	opacity: 0.8;
-	transition: all 0.5s;
+/* Estilos para la sección de derechos reservados */
+.footer-bottom {
+  background-color: #222; /* Color de fondo más oscuro */
+  padding: 10px 0; /* Espaciado interno */
+  margin-top: 20px; /* Espacio superior */
 }
 
-footer .btn-gamp input {
-	font-size: 12px;
-	text-transform: uppercase;
-	letter-spacing: 3px;
-	color: #272727;	
-	width: 180px;
-	height: 60px;
-	text-align: center;
-	display: inline-block;
-	line-height: 56px;
-	border-radius:0px;
-	border: 1px solid #fff;
+.footer-bottom p {
+  font-size: 0.9em; /* Tamaño del texto */
+  margin: 0; /* Eliminar márgenes */
 }
 
 .contact-info {

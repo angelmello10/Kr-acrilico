@@ -8,34 +8,35 @@
 	
 	<div class="gallery">
 		<div class="text-center">
-			<h2>Gallery</h2>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat quod voluptate consequuntur ad quasi,<br> dolores obcaecati ex aliquid, dolor provident </p>
+			<h2>Catálogo de productos</h2>
+			<p style="font-size: 20px;">Estos son algunos de los productos los cuales diseñamos y fabricamos.</p>
 		</div>
 		<div class="container">		
 			<div class="col-md-4">
 				<figure class="effect-marley">
-					<img src="img/8.jpg" alt="" class="img-responsive"/>
+					<img src="img/producto1.png" alt="" class="img-responsive"/>
 					<figcaption>
-						<h4>sweet marley</h4>
-						<p>Marley tried to convince her but she was not interested.</p>				
+						<h4>Expositor Acrílico Transparente</h4>
+						<p>Apilable para Productos a Granel 320 x 410 x 320 mm</p>				
+					</figcaption>			
+				</figure>
+			</div>
+			
+			<div class="col-md-4">							
+				<figure class="effect-marley">
+					<img src="img/img2Carrusel1.jpg" alt="" class="img-responsive"/>
+					<figcaption>
+						<h4>Portaretrato</h4>
+						<p>Acrílico doble Cristal/marco De Fotos - 25 x 15 cm</p>				
 					</figcaption>			
 				</figure>
 			</div>
 			<div class="col-md-4">
 				<figure class="effect-marley">
-					<img src="img/9.jpg" alt="" class="img-responsive"/>
+					<img src="img/caja.jpg" alt="" class="img-responsive"/>
 					<figcaption>
-						<h4>sweet marley</h4>
-						<p>Marley tried to convince her but she was not interested.</p>				
-					</figcaption>			
-				</figure>
-			</div>
-			<div class="col-md-4">
-				<figure class="effect-marley">
-					<img src="img/10.jpg" alt="" class="img-responsive"/>
-					<figcaption>
-						<h4>sweet marley</h4>
-						<p>Marley tried to convince her but she was not interested.</p>				
+						<h4>Caja de acrílico con tapa Bar</h4>
+						<p>Artículos de oficina Té de café 20 x 10 x 10 cm</p>				
 					</figcaption>			
 				</figure>
 			</div>
@@ -44,28 +45,57 @@
 		<div class="container">
 			<div class="col-md-4">
 				<figure class="effect-marley">
-					<img src="img/11.jpg" alt="" class="img-responsive"/>
+					<img src="img/prod4.jpg" alt="" class="img-responsive"/>
 					<figcaption>
-						<h4>sweet marley</h4>
-						<p>Marley tried to convince her but she was not interested.</p>				
+						<h4>Organizador De Acrílico</h4>
+						<p>Ideal para organizar productos de belleza y accesorios. Incluye 2 piezas desmontables. Úsalo en otros espacios como estudio.</p>				
 					</figcaption>			
 				</figure>
 			</div>
 			<div class="col-md-4">
 				<figure class="effect-marley">
-					<img src="img/12.jpg" alt="" class="img-responsive"/>
+					<img src="img/prod7.jpg" alt="" class="img-responsive"/>
 					<figcaption>
-						<h4>sweet marley</h4>
-						<p>Marley tried to convince her but she was not interested.</p>				
+						<h4>Exhibidor</h4>
+						<p>Hecho de acrílico - medidas: 25 x 18 cm</p>				
 					</figcaption>			
 				</figure>
 			</div>
 			<div class="col-md-4">
 				<figure class="effect-marley">
-					<img src="img/13.jpg" alt="" class="img-responsive"/>
+					<img src="img/product8.jpg" alt="" class="img-responsive"/>
 					<figcaption>
-						<h4>sweet marley</h4>
-						<p>Marley tried to convince her but she was not interested.</p>				
+						<h4>Porta Flyers</h4>
+						<p>Medidas: 30 x 10 CM</p>				
+					</figcaption>			
+				</figure>
+			</div>
+		</div>
+		<div class="container">
+			<div class="col-md-4">
+				<figure class="effect-marley">
+					<img src="img/prod4.jpg" alt="" class="img-responsive"/>
+					<figcaption>
+						<h4>Organizador De Acrílico</h4>
+						<p>Ideal para organizar productos de belleza y accesorios. Incluye 2 piezas desmontables. Úsalo en otros espacios como estudio.</p>				
+					</figcaption>			
+				</figure>
+			</div>
+			<div class="col-md-4">
+				<figure class="effect-marley">
+					<img src="img/prod7.jpg" alt="" class="img-responsive"/>
+					<figcaption>
+						<h4>Exhibidor</h4>
+						<p>Hecho de acrílico - medidas: 25 x 18 cm</p>				
+					</figcaption>			
+				</figure>
+			</div>
+			<div class="col-md-4">
+				<figure class="effect-marley">
+					<img src="img/product8.jpg" alt="" class="img-responsive"/>
+					<figcaption>
+						<h4>Porta Flyers</h4>
+						<p>Medidas: 30 x 10 CM</p>				
 					</figcaption>			
 				</figure>
 			</div>
