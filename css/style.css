@@ -60,32 +60,44 @@ a:hover {
 
 /* Estilos para el logo */
 .navbar-brand {
-  position: relative; /* Fija el contenedor en la pantalla */
-  top: 0; /* Lo coloca en la parte superior */
-  left: 10px; /* Ajusta la posición horizontal */
-  padding: 6px; /* Espacio alrededor del logo */
-  display: flex; /* Habilita flexbox para centrar el logo */
-  justify-content: center; /* Centra el logo horizontalmente */
-  align-items: center; /* Centra el logo verticalmente */
-  background: #65AAF0; /* Fondo azul para el contenedor (opcional) */
+  position: relative;
+  top: 0;
+  left: 10px;
+  padding: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #65AAF0;
+  overflow: visible; /* Permite que el logo sobresalga */
 }
 
 .navbar-brand .logo {
-  width: 100px; /* Tamaño base del logo */
-  height: auto; /* Mantiene la proporción del logo */
-  max-width: 100%; /* Asegura que el logo no se desborde en pantallas pequeñas */
+  width: 150px; /* Aumenta el tamaño del logo */
+  height: auto;
+  max-width: none; /* Permite que el logo crezca más allá del navbar */
+  position: absolute; /* Hace que el logo se posicione sin afectar el tamaño del navbar */
+  top: 100%; /* Ajusta la posición verticalmente */
+  transform: translateY(-52%); /* Centra el logo respecto al navbar */
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 10px 5px 5px #807f7f;
+  left: -120px; /* Mueve el logo más a la izquierda sin afectar el nav */
 }
 
 /* Estilos responsivos para el logo */
 @media screen and (max-width: 768px) {
   .navbar-brand .logo {
-    width: 80px; /* Tamaño más pequeño para tablets */
+    width: 120px; /* Tamaño más pequeño para tablets */
+    left: -10px; /* Ajusta la posición para que no sobresalga demasiado */
+    box-shadow: 0px 5px 5px #e2e2e2;
+    background-color: #ffffff;
   }
 }
 
 @media screen and (max-width: 460px) {
   .navbar-brand .logo {
-    width: 60px; /* Tamaño más pequeño para móviles */
+    width: 100px; /* Tamaño más pequeño para móviles */
+    left: 0px; /* Ajusta la posición para móviles */
   }
 }
 
@@ -96,6 +108,7 @@ a:hover {
     top: 15px; /* Ajusta la posición vertical si es necesario */
   }
 }
+
 .navbar-brand h1 {
 	margin-top:9px;
 	padding-top:5px;

@@ -2,7 +2,6 @@
 <html lang="en">
 <?php include"components/head.php"; ?>
   <body>	
-	
   <header id="header">
 		<?php include"components/nav.php"; ?><!--/Barra Nav-->	
 </header><!--/header-->	
