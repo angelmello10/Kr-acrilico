@@ -760,6 +760,7 @@ ul.social_icons li  a i{
  .services p{
   font-size: 16px;
   color: #000000;
+  text-align: justify;
  }
 
 /*===========================
@@ -943,7 +944,7 @@ figure.effect-marley:hover p {
 }
 
 .map iframe{
-	width:100%;
+	width:50%;
 	height:450px;
 	border:none;
 }

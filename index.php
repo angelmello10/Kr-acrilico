@@ -134,6 +134,7 @@
 			<div class="right-image hidden-xs"></div>
 		</div>
 	</section>
+	<hr>
 	<?php include("components/footer.php");
 	include("components/boton-whats.php");
 	?>
