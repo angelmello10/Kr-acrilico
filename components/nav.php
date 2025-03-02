@@ -10,7 +10,7 @@
 					</button>
 					<div class="navbar-brand">
 						<a href="index.php">
-							<img src="img/Logo1.png" alt="K&R Acrílicos" class="logo">
+							<img src="img/LogoRBK.jpg" alt="RBK - Acrílicos" class="logo">
 						</a>
 					</div>
 				</div>		
