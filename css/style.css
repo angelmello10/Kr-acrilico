@@ -1176,7 +1176,7 @@ textarea#message {
 .footer-content {
   max-width: 1200px; /* Ancho máximo del contenido */
   margin: 0 auto; /* Centrar el contenido */
-  padding: 0 20px; /* Espaciado lateral */
+  padding: 0 10px; /* Espaciado lateral */
 }
 
 .footer-section h2 {
@@ -1187,7 +1187,7 @@ textarea#message {
 
 .footer-section p {
   font-size: 1em; /* Tamaño del texto */
-  margin: 5px 0; /* Espaciado entre párrafos */
+  margin: 2px 0; /* Espaciado entre párrafos */
   color: #ffffff;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Sombra para mejorar la visibilidad */
 }
@@ -1195,8 +1195,8 @@ textarea#message {
 /* Estilos para la sección de derechos reservados */
 .footer-bottom {
   background-color: #222; /* Color de fondo más oscuro */
-  padding: 10px 0; /* Espaciado interno */
-  margin-top: 20px; /* Espacio superior */
+  padding: 1px 0; /* Espaciado interno */
+  margin-top: 10px; /* Espacio superior */
 }
 
 .footer-bottom p {

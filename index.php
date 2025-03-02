@@ -15,7 +15,7 @@
 			<div class="text-center">
 				<h2>Materiales con los que diseñamos</h2>
 				<div class="col-md-10 col-md-offset-1">
-					<p>En <strong>K&R Acrílicos</strong>, trabajamos con una amplia gama de materiales acrílicos y complementarios para crear productos innovadores, resistentes y estéticamente atractivos. Todos nuestros materiales cumplen con la mejor calidad y durabilidad, lo que nos permite ofrecer soluciones personalizadas para cualquier necesidad.</p>
+					<p>En <strong>RBK Acrílicos</strong>, trabajamos con una amplia gama de materiales acrílicos y complementarios para crear productos innovadores, resistentes y estéticamente atractivos. Todos nuestros materiales cumplen con la mejor calidad y durabilidad, lo que nos permite ofrecer soluciones personalizadas para cualquier necesidad.</p>
 					<p ><strong>Consulta aquí nuestros servicios y encuentra lo que buscas:</p>
 					<div class="gamp-btn"><a href="services.php">Servicios</a></div>
 				</div>
