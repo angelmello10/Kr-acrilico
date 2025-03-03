@@ -11,7 +11,7 @@
         </div>
         <div class="col-md-4 d-flex align-items-center">
           <i class="fa-solid fa-phone me-2" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);"></i>
-          <p class="mb-0">+52 55 1319 9679</p>
+          <p class="mb-0">+52 55 6040 4705</p>
         </div>
         <div class="col-md-4 d-flex align-items-center">
           <i class="fa-solid fa-envelope me-2" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);"></i>
