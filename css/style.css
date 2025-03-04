@@ -921,7 +921,7 @@ ul.social_icons li a i {
   position: relative;
   margin-top: 30px;
   margin-bottom: 30px;
-  background: #c6cbd0;
+  background: #e1e7ec;
   text-align: center;
   cursor: pointer;
 }
@@ -935,7 +935,7 @@ ul.social_icons li a i {
 
 .gallery figure figcaption {
   /* Esto es la barra debajo de la imagen */
-  padding: 1.2em;
+  padding: 0.8em;
   color: #fff;
   text-transform: uppercase;
   font-size: 1.25em;
