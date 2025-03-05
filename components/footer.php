@@ -15,7 +15,7 @@
         </div>
         <div class="col-md-4 d-flex align-items-center">
           <i class="fa-solid fa-envelope me-2" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);"></i>
-          <p class="mb-0"> info@empresa.com</p>
+          <p class="mb-0"> contacto@rbkacrilicos.com</p>
         </div>
       </div>
     </div>
