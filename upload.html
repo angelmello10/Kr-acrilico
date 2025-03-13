@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Upload and CRUD</title>
+    <script
+      type="module"
+      src="https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js"
+    ></script>
+    <script
+      type="module"
+      src="https://www.gstatic.com/firebasejs/10.11.1/firebase-storage.js"
+    ></script>
+    <script
+      type="module"
+      src="https://www.gstatic.com/firebasejs/10.11.1/firebase-database.js"
+    ></script>
+
+    <style>
+      /* Estilos generales */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5; /* Gris claro */
+        color: #333; /* Gris oscuro */
+        margin: 0;
+        padding: 0;
+        display: flex;
+        min-height: 100vh;
+      }
+
+      h1,
+      h2 {
+        color: #007bff; /* Azul */
+      }
+
+      /* Contenedor principal */
+      .container {
+        display: flex;
+        width: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+      }
+
+      /* Parte izquierda: Formulario de subida */
+      .left-panel {
+        flex: 1;
+        margin-right: 20px;
+      }
+
+      #imageUploader,
+      #editForm {
+        background-color: #fff; /* Blanco */
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+      }
+
+      /* Parte derecha: Tabla de productos */
+      .right-panel {
+        flex: 2;
+      }
+
+      /* Inputs y textarea */
+      input[type="file"],
+      input[type="text"],
+      textarea {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ddd; /* Gris claro */
+        border-radius: 4px;
+        font-size: 16px;
+      }
+
+      textarea {
+        resize: vertical;
+        min-height: 100px;
+      }
+
+      /* Botones */
+      button {
+        background-color: #007bff; /* Azul */
+        color: #fff; /* Blanco */
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        margin: 5px;
+      }
+
+      button:hover {
+        background-color: #0056b3; /* Azul más oscuro */
+      }
+
+      /* Barra de progreso */
+      #progressBar {
+        width: 100%;
+        background-color: #ddd; /* Gris claro */
+        border-radius: 4px;
+        margin: 10px 0;
+      }
+
+      #progressBar div {
+        height: 10px;
+        background-color: #007bff; /* Azul */
+        border-radius: 4px;
+        width: 0%;
+      }
+
+      /* Tabla de productos */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: #fff; /* Blanco */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+      }
+
+      th,
+      td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd; /* Gris claro */
+      }
+
+      th {
+        background-color: #007bff; /* Azul */
+        color: #fff; /* Blanco */
+      }
+
+      tr:hover {
+        background-color: #f9f9f9; /* Gris muy claro */
+      }
+
+      /* Imagen en la tabla */
+      img {
+        max-width: 100px;
+        max-height: 100px;
+        border-radius: 4px;
+      }
+
+      /* Formulario de edición */
+      #editForm {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Parte izquierda: Formulario de subida -->
+      <div class="left-panel">
+        <div id="imageUploader">
+          <h1>Upload Image</h1>
+          <input type="file" id="fileInput" accept="image/*" />
+          <input type="text" id="productName" placeholder="Product Name" />
+          <textarea
+            id="productDescription"
+            placeholder="Product Description"
+          ></textarea>
+          <div id="progressBar">
+            <div></div>
+          </div>
+          <button id="uploadImage">Upload Image</button>
+        </div>
+
+        <!-- Formulario de edición -->
+        <div id="editForm">
+          <h2>Edit Product</h2>
+          <input type="file" id="editFileInput" accept="image/*" />
+          <input type="text" id="editProductName" placeholder="Product Name" />
+          <textarea
+            id="editProductDescription"
+            placeholder="Product Description"
+          ></textarea>
+          <button id="saveEdit">Save Changes</button>
+          <button id="cancelEdit">Cancel</button>
+        </div>
+      </div>
+
+      <!-- Parte derecha: Tabla de productos -->
+      <div class="right-panel">
+        <h2>Product List</h2>
+        <button type="button" id="addProduct" hidden>Agregar Producto</button>
+        <table id="productTable">
+          <thead>
+            <tr>
+              <th>Image</th>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
+      import {
+        getStorage,
+        ref,
+        uploadBytesResumable,
+        getDownloadURL,
+        deleteObject,
+      } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-storage.js";
+      import {
+        getDatabase,
+        ref as dbRef,
+        push,
+        set,
+        onValue,
+        remove,
+        update,
+      } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-database.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyDWc06-qSCwhKBxJgzdYhIYh_WUQY26SuA",
+        authDomain: "english-platform-3f63d.firebaseapp.com",
+        projectId: "english-platform-3f63d",
+        storageBucket: "english-platform-3f63d.firebasestorage.app",
+        messagingSenderId: "673596406230",
+        appId: "1:673596406230:web:9aa1db2d69cbdd51d5cc77",
+        databaseURL:
+          "https://english-platform-3f63d-default-rtdb.firebaseio.com/",
+      };
+      const app = initializeApp(firebaseConfig);
+      const storage = getStorage(app);
+      const database = getDatabase(app);
+
+      let editingProductKey = null; // Almacena la clave del producto que se está editando
+      let currentImageUrl = null; // Almacena la URL de la imagen actual
+
+      // Subir imagen y datos
+      async function uploadImage() {
+        const fileInput = document.getElementById("fileInput");
+        const productName = document.getElementById("productName").value;
+        const productDescription =
+          document.getElementById("productDescription").value;
+        const file = fileInput.files[0];
+
+        if (file && productName && productDescription) {
+          const storageRef = ref(storage, `uploaded_images/${file.name}`);
+          const uploadTask = uploadBytesResumable(storageRef, file);
+
+          // Monitorear el progreso de la carga
+          uploadTask.on(
+            "state_changed",
+            (snapshot) => {
+              const progress =
+                (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+              document.querySelector("#progressBar div").style.width =
+                progress + "%";
+            },
+            (error) => {
+              console.error("Error al subir la imagen:", error);
+            },
+            async () => {
+              const imageURL = await getDownloadURL(uploadTask.snapshot.ref);
+              alert("Imagen subida correctamente.");
+
+              // Almacenar los datos en la Realtime Database
+              await storeProductData(productName, productDescription, imageURL);
+
+              // Limpiar el formulario
+              fileInput.value = "";
+              document.getElementById("productName").value = "";
+              document.getElementById("productDescription").value = "";
+              document.querySelector("#progressBar div").style.width = "0%";
+            }
+          );
+        }
+      }
+
+      // Almacenar datos en la Realtime Database
+      async function storeProductData(
+        productName,
+        productDescription,
+        imageURL
+      ) {
+        try {
+          const productRef = dbRef(database, "products");
+          const newProductRef = push(productRef);
+          await set(newProductRef, {
+            nombre: productName,
+            descripcion: productDescription,
+            url: imageURL,
+          });
+          console.log("Datos almacenados con ID: ", newProductRef.key);
+        } catch (e) {
+          console.error("Error añadiendo datos: ", e);
+        }
+      }
+
+      // Mostrar datos en la tabla
+      function displayProducts() {
+        const productRef = dbRef(database, "products");
+        onValue(productRef, (snapshot) => {
+          const products = snapshot.val();
+          const tbody = document.querySelector("#productTable tbody");
+          tbody.innerHTML = "";
+
+          if (products) {
+            Object.keys(products).forEach((key) => {
+              const product = products[key];
+              const row = `
+                <tr>
+                  <td><img src="${product.url}" alt="${product.nombre}" /></td>
+                  <td>${product.nombre}</td>
+                  <td>${product.descripcion}</td>
+                  <td>
+                    <button onclick="openEditForm('${key}', '${product.nombre}', '${product.descripcion}', '${product.url}')">Edit</button>
+                    <button onclick="deleteProduct('${key}', '${product.url}')">Delete</button>
+                  </td>
+                </tr>
+              `;
+              tbody.innerHTML += row;
+            });
+          }
+        });
+      }
+
+      // Abrir formulario de edición
+      window.openEditForm = function (key, name, description, url) {
+        editingProductKey = key;
+        currentImageUrl = url; // Guardar la URL de la imagen actual
+        document.getElementById("editProductName").value = name;
+        document.getElementById("editProductDescription").value = description;
+        document.getElementById("editFileInput").value = ""; // Limpiar el input de archivo
+        document.getElementById("editForm").style.display = "block";
+      };
+
+      // Guardar cambios al editar
+      document
+        .getElementById("saveEdit")
+        .addEventListener("click", async () => {
+          const newName = document.getElementById("editProductName").value;
+          const newDescription = document.getElementById(
+            "editProductDescription"
+          ).value;
+          const newFile = document.getElementById("editFileInput").files[0];
+
+          if (newName && newDescription) {
+            let newImageURL = currentImageUrl; // Mantener la URL actual por defecto
+
+            // Si se selecciona una nueva imagen, subirla
+            if (newFile) {
+              const storageRef = ref(
+                storage,
+                `uploaded_images/${newFile.name}`
+              );
+              const uploadTask = uploadBytesResumable(storageRef, newFile);
+
+              uploadTask.on(
+                "state_changed",
+                (snapshot) => {
+                  const progress =
+                    (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                  document.querySelector("#progressBar div").style.width =
+                    progress + "%";
+                },
+                (error) => {
+                  console.error("Error al subir la imagen:", error);
+                },
+                async () => {
+                  newImageURL = await getDownloadURL(uploadTask.snapshot.ref);
+                  alert("Imagen subida correctamente.");
+
+                  // Actualizar los datos en la Realtime Database
+                  const productRef = dbRef(
+                    database,
+                    `products/${editingProductKey}`
+                  );
+                  await update(productRef, {
+                    nombre: newName,
+                    descripcion: newDescription,
+                    url: newImageURL, // Usar la nueva URL o la actual
+                  });
+
+                  console.log("Producto actualizado");
+                  document.getElementById("editForm").style.display = "none";
+                  document.querySelector("#progressBar div").style.width = "0%";
+                }
+              );
+            } else {
+              // Si no hay nueva imagen, solo actualizar nombre y descripción
+              const productRef = dbRef(
+                database,
+                `products/${editingProductKey}`
+              );
+              await update(productRef, {
+                nombre: newName,
+                descripcion: newDescription,
+              });
+
+              console.log("Producto actualizado");
+              document.getElementById("editForm").style.display = "none";
+            }
+          }
+        });
+
+      // Cancelar edición
+      document.getElementById("cancelEdit").addEventListener("click", () => {
+        document.getElementById("editForm").style.display = "none";
+      });
+
+      // Eliminar producto
+      window.deleteProduct = async function (key, url) {
+        if (confirm("¿Estás seguro de eliminar este producto?")) {
+          // Eliminar de la Realtime Database
+          const productRef = dbRef(database, `products/${key}`);
+          await remove(productRef);
+
+          // Eliminar la imagen de Firebase Storage
+          const imageRef = ref(storage, url);
+          await deleteObject(imageRef);
+
+          console.log("Producto eliminado");
+        }
+      };
+
+      // Botón para agregar nuevo producto
+      document.getElementById("addProduct").addEventListener("click", () => {
+        document.getElementById("imageUploader").style.display = "block";
+      });
+
+      // Cargar productos al iniciar
+      displayProducts();
+
+      // Subir imagen al hacer clic en el botón
+      document
+        .getElementById("uploadImage")
+        .addEventListener("click", uploadImage);
+    </script>
+  </body>
+</html>
