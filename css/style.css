@@ -919,18 +919,18 @@ ul.social_icons li a i {
 
 .gallery figure {
   position: relative;
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   background: #e1e7ec;
   text-align: center;
   cursor: pointer;
 }
 
 .gallery figure img {
-  width: 350px; /* Ajusta el ancho según lo que necesites */
-  height: 300px; /* Ajusta la altura según lo que necesites */
-  object-fit: cover; /* Corta la imagen para llenar el contenedor sin deformarse */
-  opacity: 1;
+  width: 350px; /* Ancho fijo */
+  height: 350px; /* Alto fijo */
+  object-fit: contain; /* La imagen se ajusta sin recortarse */
+  background-color: #ffffff; /* Color de fondo para los espacios vacíos */
 }
 
 .gallery figure figcaption {
@@ -971,9 +971,11 @@ figure.effect-marley p {
   right: 30px;
   left: 30px;
   padding: 17px 0;
-  font-size: 15px;
+  font-size: 13px;
   text-align: center;
   font-weight: bold;
+  text-transform: none; /* Asegura que el texto no se convierta en mayúsculas */
+  text-align: left;
 }
 
 figure.effect-marley p {
@@ -984,6 +986,7 @@ figure.effect-marley p {
   transform: translate3d(0, 100%, 0);
   text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black,
     1px 1px 0 black; /* Crea el borde blanco */
+  text-transform: none;
 }
 
 figure.effect-marley h4 {

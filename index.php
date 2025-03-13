@@ -61,10 +61,10 @@
 		<div class="container">		
 			<div class="col-md-4">
 				<figure class="effect-marley">
-					<img src="img/producto1.png" alt="" class="img-responsive"/>
+					<img src="img/exhibidor_autos.jpg" alt="" class="img-responsive"/>
 					<figcaption>
-						<h4>Expositor Acrílico Transparente</h4>
-						<p>Apilable para Productos a Granel 320 x 410 x 320 mm</p>				
+						<h4>Exhibidor de autos HotWheels</h4>
+						<p>Material: Madera MDF</p>				
 					</figcaption>			
 				</figure>
 			</div>
@@ -73,7 +73,7 @@
 				<figure class="effect-marley">
 					<img src="img/img2Carrusel1.jpg" alt="" class="img-responsive"/>
 					<figcaption>
-						<h4>Portaretrato</h4>
+						<h4>Portaretratos</h4>
 						<p>Acrílico doble Cristal/marco De Fotos - 25 x 15 cm</p>				
 					</figcaption>			
 				</figure>
@@ -82,7 +82,7 @@
 				<figure class="effect-marley">
 					<img src="img/caja.jpg" alt="" class="img-responsive"/>
 					<figcaption>
-						<h4>Caja de acrílico con tapa Bar</h4>
+						<h4>Caja de Mader Mdf</h4>
 						<p>Artículos de oficina Té de café 20 x 10 x 10 cm</p>				
 					</figcaption>			
 				</figure>
@@ -109,10 +109,10 @@
 			</div>
 			<div class="col-md-4">
 				<figure class="effect-marley">
-					<img src="img/product8.jpg" alt="" class="img-responsive"/>
+					<img src="img/lapicero.jpeg" alt="" class="img-responsive"/>
 					<figcaption>
-						<h4>Porta Flyers</h4>
-						<p>Medidas: 30 x 10 CM</p>				
+						<h4>Porta Lapicero</h4>
+						<p> Material: Acrílico Medidas: 15 x 15 CM</p>				
 					</figcaption>			
 				</figure>
 			</div>
